@@ -9,14 +9,19 @@
 //ejecutado por su nieto Item.
 
 // PROPS: App deberá pasar por props lo necesario a sus componenetes internos.
-
+import {useState} from "react";
+import Listado from "./components/Listado";
+import Cabecera from "./components/Cabecera"
 function App() {
+  const [comprados, setComprados] = useState(0);
   
+  function sumarComprados(){
+    setComprados(comprados+1);}
 
   return (
     <div className="App">
-      <Cabecera />
-      <Listado />
+      <Cabecera comprados={comprados}/>
+      <Listado sumarComprados={sumarComprados} />
     </div>
   );
 }
