@@ -21,13 +21,20 @@ export default function Item(props) {
       props.sumarCarrito();
     } 
   }
+  const boton = function (){
+    if(stock>0) {
+      return "COMPRAR"
+     } else if(stock <=0) {
+      return "SIN STOCK";
+     }
+  }
 
   return (
     <div className='producto'>
         <h3>{props.nombre}</h3>
         <p>{props.descripcion}</p>
-        <h5>En stock<span>{stock>0 ? stock : "agotado"}  </span></h5>
-        <button onClick={()=>restarStock()} disabled={stock<=0}>{stock> 0 ? "COMPRAR" : "sin stock"} </button>
+        <h5>En stock: {stock>0 ? stock : <span>agotado</span>}  </h5>
+        <button onClick={()=>restarStock()} disabled={stock<=0}> {boton()} </button>
     </div>
   )
 }
